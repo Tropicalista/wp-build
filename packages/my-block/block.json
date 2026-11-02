@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "greeting-plugin/greeting",
+	"name": "my-plugin/my-block",
 	"version": "1.0.0",
 	"title": "Saluto",
 	"category": "widgets",
