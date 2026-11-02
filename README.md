@@ -1,0 +1,1 @@
+[![Playground Demo Link](https://img.shields.io/wordpress/plugin/v/icon-block?logo=wordpress&logoColor=%23fff&label=Playground%20Demo&labelColor=%233858e9&color=%233858e9)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/ndiego/icon-block/main/_playground/blueprint.json)
