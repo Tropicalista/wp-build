@@ -16,3 +16,7 @@ add_action( 'admin_menu', function () {
         'my_plugin_my_admin_page_wp_admin_render_page'  // callback generata
     );
 } );
+
+add_action( 'init', function () {
+    register_block_type( __DIR__ . '/packages/my-block' );
+}, 20 );
