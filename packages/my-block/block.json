@@ -7,7 +7,7 @@
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Mostra il saluto impostato nella pagina admin del plugin.",
-	"textdomain": "greeting-plugin",
+	"textdomain": "my-plugin",
 	"supports": {
 		"html": false,
 		"color": {
