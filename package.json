@@ -4,10 +4,10 @@
   "scripts": {
     "build": "npm run build:admin && npm run build:blocks",
     "build:admin": "wp-build",
-    "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build-blocks --webpack-copy-php",
+    "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks --webpack-copy-php",
     "dev": "npm-run-all --parallel dev:admin dev:blocks",
     "dev:admin": "wp-build --watch",
-    "dev:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build-blocks --webpack-copy-php"
+    "dev:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks --webpack-copy-php"
   },
   "wpPlugin": {
     "name": "my_plugin",
