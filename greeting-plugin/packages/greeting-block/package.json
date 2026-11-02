@@ -1,0 +1,6 @@
+{
+	"name": "@greeting-plugin/greeting-block",
+	"version": "1.0.0",
+	"private": true,
+	"wpScript": true
+}

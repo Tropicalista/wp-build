@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "greeting-plugin/greeting",
+	"version": "1.0.0",
+	"title": "Saluto",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Mostra il saluto impostato nella pagina admin del plugin.",
+	"textdomain": "greeting-plugin",
+	"supports": {
+		"html": false,
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"typography": {
+			"fontSize": true
+		}
+	},
+	"render": "file:./render.php"
+}

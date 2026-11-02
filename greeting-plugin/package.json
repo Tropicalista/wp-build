@@ -1,0 +1,23 @@
+{
+	"name": "greeting-plugin",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"build": "wp-build",
+		"dev": "wp-build --watch"
+	},
+	"devDependencies": {
+		"@wordpress/build": "^0.26.0"
+	},
+	"wpPlugin": {
+		"name": "greeting_plugin",
+		"scriptGlobal": "greetingPlugin",
+		"packageNamespace": "greeting-plugin",
+		"pages": [
+			{
+				"id": "greeting-settings",
+				"capability": "manage_options"
+			}
+		]
+	}
+}
