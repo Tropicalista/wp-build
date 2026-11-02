@@ -1,6 +1,6 @@
 {
 	"route": {
 		"path": "/",
-		"page": "greeting-settings"
+		"page": "my-admin-page"
 	}
 }
