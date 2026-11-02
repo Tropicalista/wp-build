@@ -1,6 +1,6 @@
 {
 	"route": {
 		"path": "/",
-		"page": "my-admin-page"
+		"page": "pdf-embed-settings"
 	}
 }
