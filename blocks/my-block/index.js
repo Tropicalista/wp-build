@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import metadata from './block.json';
-import './style.scss';
+import './style.css';
 
 registerBlockType( metadata.name, {
 	edit: ( { attributes, setAttributes } ) => (
