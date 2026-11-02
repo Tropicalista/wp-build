@@ -1,5 +1,5 @@
 {
-  "name": "my-plugin",
+  "name": "pdf-embed",
   "private": true,
   "scripts": {
     "build": "npm run build:admin && npm run build:blocks",
