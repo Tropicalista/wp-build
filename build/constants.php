@@ -5,7 +5,7 @@
  *
  * Returns an array of constants for use in other templates.
  *
- * @package my_plugin
+ * @package pdf_embed
  */
 
 return array(
