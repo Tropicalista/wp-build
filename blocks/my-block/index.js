@@ -1,20 +1,17 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps } from '@wordpress/block-editor';
-import { useEffect, useState } from '@wordpress/element';
-import apiFetch from '@wordpress/api-fetch';
-import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
+import metadata from './block.json';
+import './style.scss';
 
-function GreetingEdit() {
-	const blockProps = useBlockProps();
-	const [ message, setMessage ] = useState( '' );
-
-	return (
-		<p { ...blockProps }>
-			{ message || __( 'Imposta il saluto nella pagina Saluto.', 'greeting-plugin' ) }
-		</p>
-	);
-}
-
-registerBlockType( 'greeting-plugin/greeting', {
-	edit: GreetingEdit,
+registerBlockType( metadata.name, {
+	edit: ( { attributes, setAttributes } ) => (
+		<div { ...useBlockProps() }>
+			<RichText
+				tagName="p"
+				value={ attributes.message }
+				onChange={ ( message ) => setAttributes( { message } ) }
+			/>
+		</div>
+	),
+	save: () => null, // blocco dinamico: il rendering è in render.php
 } );
