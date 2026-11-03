@@ -1,33 +1,44 @@
-import {
-	ProgressBar,
-	Button,
-	Icon,
-	TextControl,
-	Card,
-	CardBody,
-	CardHeader,
-	Notice,
-} from "@wordpress/components";
-import { Page } from "@wordpress/admin-ui";
-import { __, sprintf } from "@wordpress/i18n";
-import { RawHTML, useContext } from "@wordpress/element";
-import { addQueryArgs } from "@wordpress/url";
-import { useNavigate } from "@wordpress/route";
-import { Card } from "@wordpress/ui";
-import logo from "../../assets/logo.svg";
+import { Page } from '@wordpress/admin-ui';
+import { __, sprintf } from '@wordpress/i18n';
+import { RawHTML, useContext } from '@wordpress/element';
+import { addQueryArgs } from '@wordpress/url';
+import { useNavigate } from '@wordpress/route';
+import { Card } from '@wordpress/ui';
+import logo from '../../assets/logo.svg';
 
 function Stage() {
 	const navigate = useNavigate();
 
 	return (
 		<Page
-			title={__("Settings", "pdf-embed")}
-			subTitle={__(
-				"This is a minimal wp-build route that renders DataViews.",
-				"pdf-embed",
-			)}
-			visual={<img src={logo} alt="" />}
-			hasPadding={true}
+			title={ __( 'Settings', 'pdf-embed' ) }
+			subTitle={ __(
+				'This is a minimal wp-build route that renders DataViews.',
+				'pdf-embed'
+			) }
+			visual={ <img src={ logo } alt="" /> }
+			hasPadding={ true }
+			navigation={ {
+				currentHref: '/overview',
+				items: [
+					{
+						href: '/overview',
+						label: 'Overview',
+					},
+					{
+						href: '/products',
+						label: 'Products',
+					},
+					{
+						href: '/orders',
+						label: 'Orders',
+					},
+					{
+						href: '/customers',
+						label: 'Customers',
+					},
+				],
+			} }
 		>
 			<div className="experiments-page__form">
 				<Card.Root>

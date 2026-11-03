@@ -63,10 +63,10 @@ var require_components = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/internals/useRenderElement.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/internals/useRenderElement.mjs
 var React5 = __toESM(require_react(), 1);
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/useRefWithInit.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/useRefWithInit.mjs
 var React2 = __toESM(require_react(), 1);
 var UNINITIALIZED = {};
 function useRefWithInit(init, initArg) {
@@ -77,7 +77,7 @@ function useRefWithInit(init, initArg) {
   return ref;
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/useMergedRefs.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/useMergedRefs.mjs
 function useMergedRefs(a, b, c, d) {
   const forkRef = useRefWithInit(createForkRef).current;
   if (didChange(forkRef, a, b, c, d)) {
@@ -166,17 +166,17 @@ function update(forkRef, refs) {
   };
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/getReactElementRef.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/getReactElementRef.mjs
 var React4 = __toESM(require_react(), 1);
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/reactVersion.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/reactVersion.mjs
 var React3 = __toESM(require_react(), 1);
 var majorVersion = parseInt(React3.version, 10);
 function isReactVersionAtLeast(reactVersionToCheck) {
   return majorVersion >= reactVersionToCheck;
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/getReactElementRef.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/getReactElementRef.mjs
 function getReactElementRef(element) {
   if (!/* @__PURE__ */ React4.isValidElement(element)) {
     return null;
@@ -186,7 +186,7 @@ function getReactElementRef(element) {
   return (isReactVersionAtLeast(19) ? propsWithRef?.ref : reactElement.ref) ?? null;
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/mergeObjects.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/mergeObjects.mjs
 function mergeObjects(a, b) {
   if (a && !b) {
     return a;
@@ -203,7 +203,7 @@ function mergeObjects(a, b) {
   return void 0;
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/createLogOnce.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/createLogOnce.mjs
 var loggedMessages;
 if (true) {
   loggedMessages = /* @__PURE__ */ new Set();
@@ -226,14 +226,14 @@ function createLogOnce(severity, prefix) {
   };
 }
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/warn.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/warn.mjs
 var warn = createLogOnce("warn", "Base UI");
 
-// node_modules/.pnpm/@base-ui+utils@0.5.0_react-_737ba71cb71b51f78864c770a0523676/node_modules/@base-ui/utils/empty.mjs
+// node_modules/.pnpm/@base-ui+utils@0.5.0_@types_6b1c5c30254f04ccfc8f12b63d1f3b80/node_modules/@base-ui/utils/empty.mjs
 var EMPTY_ARRAY = Object.freeze([]);
 var EMPTY_OBJECT = Object.freeze({});
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/internals/getStateAttributesProps.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/internals/getStateAttributesProps.mjs
 function getStateAttributesProps(state, customMapping) {
   const props = {};
   for (const key in state) {
@@ -254,17 +254,17 @@ function getStateAttributesProps(state, customMapping) {
   return props;
 }
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/utils/resolveClassName.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/utils/resolveClassName.mjs
 function resolveClassName(className, state) {
   return typeof className === "function" ? className(state) : className;
 }
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/utils/resolveStyle.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/utils/resolveStyle.mjs
 function resolveStyle(style, state) {
   return typeof style === "function" ? style(state) : style;
 }
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/merge-props/mergeProps.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/merge-props/mergeProps.mjs
 var EMPTY_PROPS = {};
 function mergeProps(a, b, c, d, e) {
   if (!c && !d && !e && !a) {
@@ -413,7 +413,7 @@ function isSyntheticEvent(event) {
   return event != null && typeof event === "object" && "nativeEvent" in event;
 }
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/internals/useRenderElement.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/internals/useRenderElement.mjs
 var import_react = __toESM(require_react(), 1);
 function useRenderElement(element, componentProps, params = {}) {
   let renderProp = componentProps.render;
@@ -546,12 +546,12 @@ function clsx() {
 }
 var clsx_default = clsx;
 
-// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_ab4b5e640a47caa7bb2aba511a29b9c1/node_modules/@base-ui/react/use-render/useRender.mjs
+// node_modules/.pnpm/@base-ui+react@1.9.0_@date-_367596df1f109cf5c4332405308b84ea/node_modules/@base-ui/react/use-render/useRender.mjs
 function useRender(params) {
   return useRenderElement(params.defaultTagName ?? "div", params, params);
 }
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/text/text.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/text/text.mjs
 var import_element = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE = "data-wp-hash";
 function getRuntime() {
@@ -661,7 +661,7 @@ var Text = (0, import_element.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/link/link.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/link/link.mjs
 var import_element2 = __toESM(require_element(), 1);
 var import_i18n = __toESM(require_i18n(), 1);
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -809,7 +809,7 @@ var Link = (0, import_element2.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/index.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/index.mjs
 var card_exports = {};
 __export(card_exports, {
   Content: () => Content,
@@ -819,7 +819,7 @@ __export(card_exports, {
   Title: () => Title
 });
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/root.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/root.mjs
 var import_element3 = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE3 = "data-wp-hash";
 function getRuntime3() {
@@ -920,7 +920,7 @@ var Root = (0, import_element3.forwardRef)(function Card({ render, ...restProps 
   return element;
 });
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/header.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/header.mjs
 var import_element4 = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE4 = "data-wp-hash";
 function getRuntime4() {
@@ -1018,7 +1018,7 @@ var Header = (0, import_element4.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/content.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/content.mjs
 var import_element5 = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE5 = "data-wp-hash";
 function getRuntime5() {
@@ -1116,7 +1116,7 @@ var Content = (0, import_element5.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/full-bleed.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/full-bleed.mjs
 var import_element6 = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE6 = "data-wp-hash";
 function getRuntime6() {
@@ -1217,7 +1217,7 @@ var FullBleed = (0, import_element6.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/card/title.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/card/title.mjs
 var import_element7 = __toESM(require_element(), 1);
 var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
 var DEFAULT_TAG = /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", {});
@@ -1236,7 +1236,7 @@ var Title = (0, import_element7.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_53d10614e75b4d0175c42c9637e9d96a/node_modules/@wordpress/ui/build-module/stack/stack.mjs
+// node_modules/.pnpm/@wordpress+ui@0.25.0_@date-_20d55c59080f80921be53bcef83a3159/node_modules/@wordpress/ui/build-module/stack/stack.mjs
 var import_element8 = __toESM(require_element(), 1);
 var STYLE_HASH_ATTRIBUTE7 = "data-wp-hash";
 function getRuntime7() {
@@ -1352,7 +1352,7 @@ var Stack = (0, import_element8.forwardRef)(
   }
 );
 
-// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_e0eaff6add87d25144d6ad11c68a4277/node_modules/@wordpress/admin-ui/build-module/navigable-region/index.mjs
+// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_8bc649ca7d9f385b7621c36938409c68/node_modules/@wordpress/admin-ui/build-module/navigable-region/index.mjs
 var import_element9 = __toESM(require_element(), 1);
 var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
 var NavigableRegion = (0, import_element9.forwardRef)(
@@ -1374,7 +1374,7 @@ var NavigableRegion = (0, import_element9.forwardRef)(
 NavigableRegion.displayName = "NavigableRegion";
 var navigable_region_default = NavigableRegion;
 
-// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_e0eaff6add87d25144d6ad11c68a4277/node_modules/@wordpress/admin-ui/build-module/navigation/index.mjs
+// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_8bc649ca7d9f385b7621c36938409c68/node_modules/@wordpress/admin-ui/build-module/navigation/index.mjs
 var import_i18n2 = __toESM(require_i18n(), 1);
 var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
 var STYLE_HASH_ATTRIBUTE8 = "data-wp-hash";
@@ -1519,11 +1519,11 @@ var Navigation = ({
 };
 var navigation_default = Navigation;
 
-// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_e0eaff6add87d25144d6ad11c68a4277/node_modules/@wordpress/admin-ui/build-module/page/sidebar-toggle-slot.mjs
+// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_8bc649ca7d9f385b7621c36938409c68/node_modules/@wordpress/admin-ui/build-module/page/sidebar-toggle-slot.mjs
 var import_components = __toESM(require_components(), 1);
 var { Fill: SidebarToggleFill, Slot: SidebarToggleSlot } = (0, import_components.createSlotFill)("SidebarToggle");
 
-// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_e0eaff6add87d25144d6ad11c68a4277/node_modules/@wordpress/admin-ui/build-module/page/header.mjs
+// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_8bc649ca7d9f385b7621c36938409c68/node_modules/@wordpress/admin-ui/build-module/page/header.mjs
 var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
 var STYLE_HASH_ATTRIBUTE9 = "data-wp-hash";
 function getRuntime9() {
@@ -1713,7 +1713,7 @@ function Header2({
   );
 }
 
-// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_e0eaff6add87d25144d6ad11c68a4277/node_modules/@wordpress/admin-ui/build-module/page/index.mjs
+// node_modules/.pnpm/@wordpress+admin-ui@3.0.0_@_8bc649ca7d9f385b7621c36938409c68/node_modules/@wordpress/admin-ui/build-module/page/index.mjs
 var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
 var STYLE_HASH_ATTRIBUTE10 = "data-wp-hash";
 function getRuntime10() {
@@ -1867,7 +1867,28 @@ function Stage() {
         "pdf-embed"
       ),
       visual: /* @__PURE__ */ React.createElement("img", { src: logo_default, alt: "" }),
-      hasPadding: true
+      hasPadding: true,
+      navigation: {
+        currentHref: "/overview",
+        items: [
+          {
+            href: "/overview",
+            label: "Overview"
+          },
+          {
+            href: "/products",
+            label: "Products"
+          },
+          {
+            href: "/orders",
+            label: "Orders"
+          },
+          {
+            href: "/customers",
+            label: "Customers"
+          }
+        ]
+      }
     },
     /* @__PURE__ */ React.createElement("div", { className: "experiments-page__form" }, /* @__PURE__ */ React.createElement(card_exports.Root, null, /* @__PURE__ */ React.createElement(card_exports.Header, null, /* @__PURE__ */ React.createElement(card_exports.Title, null, "Heading")), /* @__PURE__ */ React.createElement(card_exports.Content, null, /* @__PURE__ */ React.createElement("p", null, "Main content here."))))
   );
