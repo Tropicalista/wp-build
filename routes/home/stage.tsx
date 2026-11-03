@@ -1,13 +1,34 @@
 import { Page } from '@wordpress/admin-ui';
 import { __, sprintf } from '@wordpress/i18n';
 import { RawHTML, useContext } from '@wordpress/element';
-import { addQueryArgs } from '@wordpress/url';
-import { useNavigate } from '@wordpress/route';
+import { store as coreDataStore, useEntityProp } from '@wordpress/core-data';
+import { useDispatch, useSelect } from '@wordpress/data';
 import { Card } from '@wordpress/ui';
 import logo from '../../assets/logo.svg';
+import './style.scss';
 
 function Stage() {
-	const navigate = useNavigate();
+	const [ settings ] = useEntityProp( 'root', 'site', 'pdf_embed' );
+
+	const { isSaving, hasEdits, hasResolved } = useSelect(
+		( select ) => ( {
+			hasResolved: select( coreDataStore ).hasFinishedResolution(
+				'getEntityRecord',
+				[ 'root', 'site' ]
+			),
+			isSaving: select( coreDataStore ).isSavingEntityRecord(
+				'root',
+				'site'
+			),
+			hasEdits: select( coreDataStore ).hasEditsForEntityRecord(
+				'root',
+				'site',
+				undefined,
+				'pdf_embed'
+			),
+		} ),
+		[]
+	);
 
 	return (
 		<Page
