@@ -1,11 +1,45 @@
 import { Page } from '@wordpress/admin-ui';
-import { __, sprintf } from '@wordpress/i18n';
-import { RawHTML, useContext } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { store as coreDataStore, useEntityProp } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { Card } from '@wordpress/ui';
+import { Card, Spinner, Stack } from '@wordpress/ui';
+import { DataForm, useFormValidity } from '@wordpress/dataviews';
 import logo from '../../assets/logo.svg';
 import './style.scss';
+import { fields } from './constants';
+import { Footer } from './footer';
+
+const form = {
+	fields: [
+		'apiKey',
+		'embedMode',
+		'showZoomControl',
+		'showAnnotationTools',
+		'showFullScreen',
+		'defaultViewMode',
+		'height',
+		'enableFormFilling',
+		'showDownloadPDF',
+		'showPrintPDF',
+		'exitPDFViewerType',
+		'showThumbnails',
+		'showBookmarks',
+		'enableLinearization',
+		'enableAnnotationAPIs',
+		'includePDFAnnotations',
+		'enableSearchAPIs',
+		'enableTextSelection',
+		'showDisabledSaveButton',
+		'focusOnRendering',
+		'showFullScreenViewButton',
+		'dockPageControls',
+		'measurementId',
+	],
+	layout: {
+		labelPosition: undefined,
+		type: 'regular',
+	},
+};
 
 function Stage() {
 	const [ settings ] = useEntityProp( 'root', 'site', 'pdf_embed' );
@@ -30,6 +64,33 @@ function Stage() {
 		[]
 	);
 
+	const { editEntityRecord } = useDispatch( coreDataStore );
+
+	const handleChange = ( edits ) => {
+		editEntityRecord( 'root', 'site', undefined, {
+			pdf_embed: {
+				...settings,
+				...edits,
+			},
+		} );
+	};
+
+	const { validity } = useFormValidity( settings || {}, fields, form );
+
+	if ( ! settings || ! hasResolved ) {
+		return (
+			<Stack
+				align="center"
+				direction="row"
+				gap="sm"
+				className="experiments-page__stage-loading"
+			>
+				<Spinner color="currentColor" />
+				<span>Loading…</span>
+			</Stack>
+		);
+	}
+
 	return (
 		<Page
 			title={ __( 'Settings', 'pdf-embed' ) }
@@ -39,37 +100,33 @@ function Stage() {
 			) }
 			visual={ <img src={ logo } alt="" /> }
 			hasPadding={ true }
-			navigation={ {
-				currentHref: '/overview',
-				items: [
-					{
-						href: '/overview',
-						label: 'Overview',
-					},
-					{
-						href: '/products',
-						label: 'Products',
-					},
-					{
-						href: '/orders',
-						label: 'Orders',
-					},
-					{
-						href: '/customers',
-						label: 'Customers',
-					},
-				],
-			} }
 		>
 			<div className="experiments-page__form">
-				<Card.Root>
-					<Card.Header>
-						<Card.Title>Heading</Card.Title>
-					</Card.Header>
-					<Card.Content>
-						<p>Main content here.</p>
-					</Card.Content>
-				</Card.Root>
+				<Stack gap="lg" align="flex-start">
+					<Card.Root>
+						<Card.Header>
+							<Card.Title>Heading</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<DataForm
+								data={ settings }
+								fields={ fields }
+								form={ form }
+								validity={ validity }
+								onChange={ ( edits ) => handleChange( edits ) }
+							/>
+						</Card.Content>
+					</Card.Root>
+					<Card.Root>
+						<Card.Header>
+							<Card.Title>Heading</Card.Title>
+						</Card.Header>
+						<Card.Content>
+							<h1>{ __( 'Heading', 'pdf-embed' ) }</h1>
+						</Card.Content>
+					</Card.Root>
+				</Stack>
+				<Footer />
 			</div>
 		</Page>
 	);

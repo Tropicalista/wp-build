@@ -1,9 +1,19 @@
 @use "@wordpress/base-styles/variables" as *;
 
+.experiments-page__stage-loading {
+    color: var(--wp--preset--color--base);
+    max-width: 300px;
+    margin: auto;
+    top: 50%;
+    position: relative;
+}
+
 .experiments-page__form {
     box-sizing: border-box;
     width: 100%;
     padding: $grid-unit-30;
-    max-width: 680px;
+    max-width: 800px;
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
 }

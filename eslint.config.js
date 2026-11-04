@@ -12,6 +12,17 @@ module.exports = [
 	js.configs.recommended,
 	...wp.configs.recommended,
 	{
+		// CATCH-ALL PER I FILE JS E JSX
+		files: [ '**/*.{js,jsx}' ],
+		languageOptions: {
+			parserOptions: {
+				ecmaFeatures: {
+					jsx: true, // Dice a ESLint che il codice può contenere JSX
+				},
+			},
+		},
+	},
+	{
 		// eslint-import-resolver-typescript@4 trips on TypeScript 6's API
 		// surface ("invalid interface loaded as resolver") and surfaces the
 		// failure on every import/* rule that consults the resolver.
