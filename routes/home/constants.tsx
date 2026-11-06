@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useCallback, createInterpolateElement } from '@wordpress/element';
 import { SelectControl, ExternalLink } from '@wordpress/components';
+import type { Field } from '@wordpress/dataviews';
 
 const embedModeHelp = {
 	FULL_WINDOW: __(
@@ -15,7 +16,7 @@ const embedModeHelp = {
 		'All PDF pages rendered in line within a web page.',
 		'pdf-embed'
 	),
-};
+} as const;
 
 const defaultViewsHelp = {
 	FIT_PAGE: __(
@@ -42,7 +43,7 @@ const defaultViewsHelp = {
 		"This mode displays only a single document page at a time and doesn't show any adjoining page.",
 		'pdf-embed'
 	),
-};
+} as const;
 
 async function validate( item, field ) {
 	const value = field.getValue( { item } );
@@ -80,7 +81,7 @@ async function validate( item, field ) {
 	}
 }
 
-const fields = [
+const fields: Field< any >[] = [
 	{
 		id: 'apiKey',
 		isValid: {
@@ -110,7 +111,7 @@ const fields = [
 	{
 		id: 'embedMode',
 		label: __( 'Embed Mode', 'pdf-embed' ),
-		//type: 'select',
+		type: 'array',
 		elements: [
 			{
 				label: 'Full Window',
@@ -133,7 +134,7 @@ const fields = [
 			const value = field.getValue( { item: data } );
 
 			const onChangeControl = useCallback(
-				( newValue ) =>
+				( newValue: string ) =>
 					onChange( setValue( { item: data, value: newValue } ) ),
 				[ data, onChange, setValue ]
 			);
@@ -153,7 +154,7 @@ const fields = [
 	{
 		id: 'defaultViewMode',
 		label: 'Default View Mode',
-		//type: 'select',
+		type: 'array',
 		description: 'This is a description for the default view mode field.',
 		elements: [
 			{
@@ -189,7 +190,7 @@ const fields = [
 			const value = field.getValue( { item: data } );
 
 			const onChangeControl = useCallback(
-				( newValue ) =>
+				( newValue: string ) =>
 					onChange( setValue( { item: data, value: newValue } ) ),
 				[ data, onChange, setValue ]
 			);
@@ -201,8 +202,7 @@ const fields = [
 					options={ field.elements }
 					value={ value ?? '' }
 					help={
-						defaultViewsHelp[ value ] ||
-						defaultViewsHelp.FULL_WINDOW
+						defaultViewsHelp[ value ] || defaultViewsHelp.FIT_PAGE
 					}
 					required={ !! field.isValid.required }
 				/>
@@ -272,7 +272,7 @@ const fields = [
 	{
 		id: 'exitPDFViewerType',
 		label: 'Exit PDF Viewer Type',
-		type: 'select',
+		type: 'array',
 		description: __( 'Configure the top bar close button.', 'pdf-embed' ),
 		elements: [
 			{

@@ -1,3 +1,39 @@
-<div <?php echo get_block_wrapper_attributes(); ?>>
-	<?php echo wp_kses_post( $attributes['message'] ?? '' ); ?>
-</div>
+<?php
+/**
+ * PHP file to use when rendering the block type on the server to show on the front end.
+ *
+ * The following variables are exposed to the file:
+ *     $attributes (array): The block attributes.
+ *     $content (string): The block default content.
+ *     $block (WP_Block): The block instance.
+ *
+ * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
+ */
+
+// Generate unique id for aria-controls.
+$unique_id = wp_unique_id( 'pdf-' );
+
+$p = new WP_HTML_Tag_Processor( $content );
+
+$options = get_option( 'pdf_embed' );
+
+if ( $p->next_tag(
+	array(
+		'tag_name'   => 'DIV',
+		'class_name' => 'wp-block-tropicalista-pdfembed',
+	)
+) ) {
+	$p->set_attribute( 'id', $unique_id );
+	$p->set_attribute( 'data-client-id', $options['apiKey'] );
+	if ( ! empty( $p->get_attribute( 'data-mediaurl' ) ) ) {
+		$p->set_attribute( 'data-media-url', $p->get_attribute( 'data-mediaurl' ) );
+	}
+	if ( ! empty( $p->get_attribute( 'data-filename' ) ) ) {
+		$p->set_attribute( 'data-file-name', $p->get_attribute( 'data-filename' ) );
+	}
+	if ( empty( $p->get_attribute( 'data-config' ) ) ) {
+		$p->set_attribute( 'data-config', wp_json_encode( $options ) );
+	}
+}
+
+echo $p->get_updated_html();

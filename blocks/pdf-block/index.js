@@ -1,17 +1,63 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
-import metadata from './block.json';
-import './style.css';
+/**
+ * Registers a new block provided a unique name and an object defining its behavior.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+import { registerBlockType, createBlock } from '@wordpress/blocks';
 
-registerBlockType(metadata.name, {
-	edit: ({ attributes, setAttributes }) => (
-		<div {...useBlockProps()}>
-			<RichText
-				tagName="p"
-				value={attributes.message}
-				onChange={(message) => setAttributes({ message })}
-			/>
-		</div>
-	),
-	save: () => null, // blocco dinamico: il rendering è in render.php
-});
+/**
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * All files containing `style` keyword are bundled together. The code used
+ * gets applied both to the front of your site and to the editor.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
+ */
+import './style.scss';
+
+import metadata from './block.json';
+
+/**
+ * Internal dependencies
+ */
+import Edit from './edit';
+import save from './save';
+import './filter';
+import deprecated from './deprecated';
+
+/**
+ * Every block starts by registering a new block type definition.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
+ */
+registerBlockType( metadata, {
+	deprecated,
+	/**
+	 * @see ./edit.js
+	 */
+	edit: Edit,
+
+	/**
+	 * @see ./save.js
+	 */
+	save,
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/file' ],
+				transform: ( { href, fileName } ) => {
+					if ( ! href ) {
+						return createBlock( 'tropicalista/pdfembed' );
+					}
+					return createBlock( 'tropicalista/pdfembed', {
+						mediaUrl: href,
+						fileName:
+							fileName ??
+							new URL( href ).pathname.split( '/' ).pop(),
+					} );
+				},
+			},
+		],
+	},
+} );

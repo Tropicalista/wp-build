@@ -29565,7 +29565,7 @@ var fields = [
   {
     id: "embedMode",
     label: (0, import_i18n32.__)("Embed Mode", "pdf-embed"),
-    //type: 'select',
+    type: "array",
     elements: [
       {
         label: "Full Window",
@@ -29606,7 +29606,7 @@ var fields = [
   {
     id: "defaultViewMode",
     label: "Default View Mode",
-    //type: 'select',
+    type: "array",
     description: "This is a description for the default view mode field.",
     elements: [
       {
@@ -29651,7 +29651,7 @@ var fields = [
           onChange: onChangeControl,
           options: field.elements,
           value: value ?? "",
-          help: defaultViewsHelp[value] || defaultViewsHelp.FULL_WINDOW,
+          help: defaultViewsHelp[value] || defaultViewsHelp.FIT_PAGE,
           required: !!field.isValid.required
         }
       );
@@ -29720,7 +29720,7 @@ var fields = [
   {
     id: "exitPDFViewerType",
     label: "Exit PDF Viewer Type",
-    type: "select",
+    type: "array",
     description: (0, import_i18n32.__)("Configure the top bar close button.", "pdf-embed"),
     elements: [
       {
@@ -29855,7 +29855,7 @@ var fields = [
   }
 ];
 
-// routes/home/footer.jsx
+// routes/home/footer.tsx
 var import_i18n33 = __toESM(require_i18n());
 var import_core_data = __toESM(require_core_data());
 var import_data = __toESM(require_data());
@@ -29938,9 +29938,9 @@ function Footer2() {
     Button4,
     {
       type: "submit",
-      variant: "primary",
-      isBusy: isSaving,
-      disabled: isSaving,
+      variant: "solid",
+      loading: isSaving,
+      disabled: isSaving || !hasEdits || !validity?.isValid,
       onClick: saveSettings,
       children: (0, import_i18n33.__)("Save settings", "pdf-embed")
     }

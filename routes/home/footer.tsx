@@ -93,9 +93,9 @@ function Footer() {
 			<Stack gap="lg" align="flex-start">
 				<Button
 					type="submit"
-					variant="primary"
-					isBusy={ isSaving }
-					disabled={ isSaving }
+					variant="solid"
+					loading={ isSaving }
+					disabled={ isSaving || ! hasEdits || ! validity?.isValid }
 					onClick={ saveSettings }
 				>
 					{ __( 'Save settings', 'pdf-embed' ) }

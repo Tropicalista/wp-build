@@ -1,11 +1,45 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "pdf-embed/viewer",
-  "title": "PDF Embed",
-  "category": "media",
-  "textdomain": "pdf-embed",
-  "editorScript": "file:./index.js",
-  "style": "file:./style-index.css",
-  "render": "file:./render.php"
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 3,
+	"name": "tropicalista/pdfembed",
+	"version": "0.3.9",
+	"title": "Embed Pdf",
+	"category": "embed",
+	"icon": "pdf",
+	"description": "PDF embedder with official Adobe Embed API.",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"dimensions": {
+			"minHeight": true,
+			"height": true
+		}
+	},
+	"attributes": {
+		"type": {
+			"enum": ["global", "local"],
+			"default": "global"
+		},
+		"mediaUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.wp-block-tropicalista-pdfembed",
+			"attribute": "data-media-url"
+		},
+		"fileName": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.wp-block-tropicalista-pdfembed",
+			"attribute": "data-file-name"
+		},
+		"config": {
+			"type": "object"
+		}
+	},
+	"textdomain": "pdf-embed",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": ["file:./view.js", "pdf-embed-api"],
+    "render": "file:./render.php"
 }

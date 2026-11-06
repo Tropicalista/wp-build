@@ -24,7 +24,7 @@ add_action(
 add_action(
 	'init',
 	function () {
-		register_block_type( __DIR__ . '/build-blocks/viewer' );
+		register_block_type( __DIR__ . '/build/blocks/pdf-block' );
 
 		$defaults = array(
 			'apiKey'                   => '',

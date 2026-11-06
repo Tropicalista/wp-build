@@ -37,7 +37,7 @@ const form = {
 	],
 	layout: {
 		labelPosition: undefined,
-		type: 'regular',
+		type: 'regular' as const,
 	},
 };
 
