@@ -145,7 +145,10 @@ const fields: Field< any >[] = [
 					onChange={ onChangeControl }
 					options={ field.elements }
 					value={ value }
-					help={ embedModeHelp[ value ] || embedModeHelp.FULL_WINDOW }
+					help={
+						embedModeHelp[ value as keyof typeof embedModeHelp ] ||
+						embedModeHelp.FULL_WINDOW
+					}
 					required={ !! field.isValid.required }
 				/>
 			);
@@ -202,7 +205,9 @@ const fields: Field< any >[] = [
 					options={ field.elements }
 					value={ value ?? '' }
 					help={
-						defaultViewsHelp[ value ] || defaultViewsHelp.FIT_PAGE
+						defaultViewsHelp[
+							value as keyof typeof defaultViewsHelp
+						] || defaultViewsHelp.FIT_PAGE
 					}
 					required={ !! field.isValid.required }
 				/>
