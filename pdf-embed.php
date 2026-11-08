@@ -80,5 +80,18 @@ add_action(
 		);
 
 		register_setting( 'pdf_embed', 'pdf_embed', $args );
+
+		$options = get_option( 'pdf_embed', false );
+
+		wp_add_inline_script(
+			'tropicalista-pdfembed-view-script',
+			'const pdf_embed = ' . wp_json_encode( $options ),
+			'before'
+		);
+		wp_add_inline_script(
+			'tropicalista-pdfembed-editor-script',
+			'const pdf_embed = ' . wp_json_encode( $options ),
+			'before'
+		);
 	}
 );

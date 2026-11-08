@@ -11,9 +11,14 @@
 .experiments-page__form {
     box-sizing: border-box;
     width: 100%;
-    padding: $grid-unit-30;
     max-width: 800px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .experiments-page__content {
+        flex-direction: column;
+    }
 }

@@ -5,41 +5,8 @@ import { Card, Button, Stack } from '@wordpress/ui';
 import { DataForm, useFormValidity } from '@wordpress/dataviews';
 import { store as noticesStore } from '@wordpress/notices';
 import './style.scss';
-import { fields } from './constants';
 
-const form = {
-	fields: [
-		'apiKey',
-		'embedMode',
-		'showZoomControl',
-		'showAnnotationTools',
-		'showFullScreen',
-		'defaultViewMode',
-		'height',
-		'enableFormFilling',
-		'showDownloadPDF',
-		'showPrintPDF',
-		'exitPDFViewerType',
-		'showThumbnails',
-		'showBookmarks',
-		'enableLinearization',
-		'enableAnnotationAPIs',
-		'includePDFAnnotations',
-		'enableSearchAPIs',
-		'enableTextSelection',
-		'showDisabledSaveButton',
-		'focusOnRendering',
-		'showFullScreenViewButton',
-		'dockPageControls',
-		'measurementId',
-	],
-	layout: {
-		labelPosition: undefined,
-		type: 'regular',
-	},
-};
-
-function Footer() {
+function Footer( { isValid } ) {
 	const [ settings ] = useEntityProp( 'root', 'site', 'pdf_embed' );
 
 	const { isSaving, hasEdits, hasResolved } = useSelect(
@@ -86,8 +53,7 @@ function Footer() {
 			} );
 	};
 
-	const { validity } = useFormValidity( settings || {}, fields, form );
-
+	console.log( 'validity', isValid );
 	return (
 		<div className="experiments-page__footer">
 			<Stack gap="lg" align="flex-start">
@@ -95,7 +61,7 @@ function Footer() {
 					type="submit"
 					variant="solid"
 					loading={ isSaving }
-					disabled={ isSaving || ! hasEdits || ! validity?.isValid }
+					disabled={ isSaving || ! hasEdits || ! isValid }
 					onClick={ saveSettings }
 				>
 					{ __( 'Save settings', 'pdf-embed' ) }

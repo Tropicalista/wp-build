@@ -24,8 +24,8 @@ import { useRefEffect, useInstanceId } from '@wordpress/compose';
 import { useEffect, useState } from '@wordpress/element';
 
 export const Viewer = ( props ) => {
-	const { attributes, setAttributes, isSelected, clientId } = props;
-	const { mediaUrl, fileName, config } = attributes;
+	const { attributes, setAttributes, isSelected } = props;
+	const { mediaUrl, fileName, config, type } = attributes;
 	const instanceId = 'pdf-' + useInstanceId( Viewer );
 	const [ settings ] = useEntityProp( 'root', 'site', 'pdf_embed' );
 
@@ -76,7 +76,7 @@ export const Viewer = ( props ) => {
 				},
 				metaData: { fileName, id: instanceId },
 			},
-			config ?? settings
+			type === 'local' ? config : settings
 		);
 	};
 

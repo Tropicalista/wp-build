@@ -8,6 +8,7 @@ import logo from '../../assets/logo.svg';
 import './style.scss';
 import { fields } from './constants';
 import { Footer } from './footer';
+import Help from './help';
 
 const form = {
 	fields: [
@@ -75,7 +76,13 @@ function Stage() {
 		} );
 	};
 
-	const { validity } = useFormValidity( settings || {}, fields, form );
+	const { validity, isValid } = useFormValidity(
+		settings || {},
+		fields,
+		form
+	);
+
+	console.log( 'validity', isValid );
 
 	if ( ! settings || ! hasResolved ) {
 		return (
@@ -95,14 +102,18 @@ function Stage() {
 		<Page
 			title={ __( 'Settings', 'pdf-embed' ) }
 			subTitle={ __(
-				'This is a minimal wp-build route that renders DataViews.',
+				'Here you can set the global settings that will be available for all Pdf Embed blocks sitewide. This settings are also valid for lightbox.',
 				'pdf-embed'
 			) }
 			visual={ <img src={ logo } alt="" /> }
 			hasPadding={ true }
 		>
 			<div className="experiments-page__form">
-				<Stack gap="lg" align="flex-start">
+				<Stack
+					gap="lg"
+					align="flex-start"
+					className="experiments-page__content"
+				>
 					<Card.Root>
 						<Card.Header>
 							<Card.Title>Heading</Card.Title>
@@ -117,16 +128,9 @@ function Stage() {
 							/>
 						</Card.Content>
 					</Card.Root>
-					<Card.Root>
-						<Card.Header>
-							<Card.Title>Heading</Card.Title>
-						</Card.Header>
-						<Card.Content>
-							<h1>{ __( 'Heading', 'pdf-embed' ) }</h1>
-						</Card.Content>
-					</Card.Root>
+					<Help />
 				</Stack>
-				<Footer />
+				<Footer isValid={ isValid } />
 			</div>
 		</Page>
 	);

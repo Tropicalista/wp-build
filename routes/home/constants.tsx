@@ -1,49 +1,8 @@
 import { __ } from '@wordpress/i18n';
 import { useCallback, createInterpolateElement } from '@wordpress/element';
-import { SelectControl, ExternalLink } from '@wordpress/components';
+import { ExternalLink } from '@wordpress/components';
+import { SelectControl } from '@wordpress/ui';
 import type { Field } from '@wordpress/dataviews';
-
-const embedModeHelp = {
-	FULL_WINDOW: __(
-		'Renders the PDF viewer into the full height and width of the parent element.',
-		'pdf-embed'
-	),
-	SIZED_CONTAINER: __(
-		'The sized container mode displays PDFs in a boxed container with landscape orientation.',
-		'pdf-embed'
-	),
-	IN_LINE: __(
-		'All PDF pages rendered in line within a web page.',
-		'pdf-embed'
-	),
-} as const;
-
-const defaultViewsHelp = {
-	FIT_PAGE: __(
-		'Displays the entire page in the current view pane.',
-		'pdf-embed'
-	),
-	FIT_WIDTH: __(
-		'Expands the page horizontally to the full width of the document pane.',
-		'pdf-embed'
-	),
-	TWO_COLUMN_FIT_PAGE: __(
-		'Displays two pages of the PDF side by side where the entire two pages are displayed in the current view pane.',
-		'pdf-embed'
-	),
-	TWO_COLUMN: __(
-		'Displays two pages of the PDF side by side in the current view pane.',
-		'pdf-embed'
-	),
-	CONTINUOS: __(
-		'This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down.',
-		'pdf-embed'
-	),
-	SINGLE_PAGE: __(
-		"This mode displays only a single document page at a time and doesn't show any adjoining page.",
-		'pdf-embed'
-	),
-} as const;
 
 async function validate( item, field ) {
 	const value = field.getValue( { item } );
@@ -111,19 +70,31 @@ const fields: Field< any >[] = [
 	{
 		id: 'embedMode',
 		label: __( 'Embed Mode', 'pdf-embed' ),
-		type: 'array',
+		type: 'text',
 		elements: [
 			{
 				label: 'Full Window',
 				value: 'FULL_WINDOW',
+				description: __(
+					'Renders the PDF viewer into the full height and width of the parent element.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Sized Container',
 				value: 'SIZED_CONTAINER',
+				description: __(
+					'The sized container mode displays PDFs in a boxed container with landscape orientation.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Inline',
 				value: 'IN_LINE',
+				description: __(
+					'All PDF pages rendered in line within a web page.',
+					'pdf-embed'
+				),
 			},
 		],
 		isValid: {
@@ -133,19 +104,27 @@ const fields: Field< any >[] = [
 			const { label, setValue } = field;
 			const value = field.getValue( { item: data } );
 
-			const onChangeControl = useCallback(
-				( newValue: string ) =>
-					onChange( setValue( { item: data, value: newValue } ) ),
-				[ data, onChange, setValue ]
-			);
-
 			return (
 				<SelectControl
 					label={ label }
-					onChange={ onChangeControl }
-					options={ field.elements }
-					value={ value }
-					help={ embedModeHelp[ value ] || embedModeHelp.FULL_WINDOW }
+					items={ field.elements }
+					value={
+						field.elements?.find(
+							( item ) => item.value === value
+						) ?? null
+					}
+					onValueChange={ ( item ) => {
+						if ( item && item.value !== null ) {
+							onChange(
+								setValue( { item: data, value: item.value } )
+							);
+						}
+					} }
+					description={
+						field.elements?.find( ( item ) => item.value === value )
+							?.description ??
+						__( 'Set the embed mode.', 'pdf-embed' )
+					}
 					required={ !! field.isValid.required }
 				/>
 			);
@@ -154,32 +133,56 @@ const fields: Field< any >[] = [
 	{
 		id: 'defaultViewMode',
 		label: 'Default View Mode',
-		type: 'array',
+		type: 'text',
 		description: 'This is a description for the default view mode field.',
 		elements: [
 			{
 				label: 'Single Page',
 				value: 'SINGLE_PAGE',
+				description: __(
+					"This mode displays only a single document page at a time and doesn't show any adjoining page.",
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Fit Width',
 				value: 'FIT_WIDTH',
+				description: __(
+					'Expands the page horizontally to the full width of the document pane.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Fit Page',
 				value: 'FIT_PAGE',
+				description: __(
+					'Displays the entire page in the current view pane.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Two Column',
 				value: 'TWO_COLUMN',
+				description: __(
+					'Displays two pages of the PDF side by side in the current view pane.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Two Column Fit Page',
 				value: 'TWO_COLUMN_FIT_PAGE',
+				description: __(
+					'Displays two pages of the PDF side by side where the entire two pages are displayed in the current view pane.',
+					'pdf-embed'
+				),
 			},
 			{
 				label: 'Continuos (Mobile only)',
 				value: 'CONTINUOS',
+				description: __(
+					'This mode displays all the document pages one after the other and users can easily navigate through the pages by scrolling up or down.',
+					'pdf-embed'
+				),
 			},
 		],
 		isValid: {
@@ -189,20 +192,26 @@ const fields: Field< any >[] = [
 			const { label, setValue } = field;
 			const value = field.getValue( { item: data } );
 
-			const onChangeControl = useCallback(
-				( newValue: string ) =>
-					onChange( setValue( { item: data, value: newValue } ) ),
-				[ data, onChange, setValue ]
-			);
-
 			return (
 				<SelectControl
 					label={ label }
-					onChange={ onChangeControl }
-					options={ field.elements }
-					value={ value ?? '' }
-					help={
-						defaultViewsHelp[ value ] || defaultViewsHelp.FIT_PAGE
+					items={ field.elements }
+					value={
+						field.elements?.find(
+							( item ) => item.value === value
+						) ?? null
+					}
+					onValueChange={ ( item ) => {
+						if ( item && item.value !== null ) {
+							onChange(
+								setValue( { item: data, value: item.value } )
+							);
+						}
+					} }
+					description={
+						field.elements?.find( ( item ) => item.value === value )
+							?.description ??
+						__( 'Set the embed mode.', 'pdf-embed' )
 					}
 					required={ !! field.isValid.required }
 				/>
@@ -272,13 +281,9 @@ const fields: Field< any >[] = [
 	{
 		id: 'exitPDFViewerType',
 		label: 'Exit PDF Viewer Type',
-		type: 'array',
+		type: 'text',
 		description: __( 'Configure the top bar close button.', 'pdf-embed' ),
 		elements: [
-			{
-				label: 'Select',
-				value: '',
-			},
 			{
 				label: 'Close icon',
 				value: 'CLOSE',
@@ -406,4 +411,4 @@ const fields: Field< any >[] = [
 		),
 	},
 ];
-export { fields, embedModeHelp };
+export { fields };

@@ -34,8 +34,10 @@
     "@wordpress/components": "^43.0.0",
     "@wordpress/core-data": "^9.0.0",
     "@wordpress/dataviews": "^21.0.0",
+    "@wordpress/i18n": "^7.1.0",
     "@wordpress/route": "^0.24.0",
     "@wordpress/ui": "^0.25.0",
+    "clsx": "^2.1.1",
     "react": "^19.3.1"
   }
 }

@@ -1,9 +1,10 @@
-import { fields } from './admin/screens/constants.js';
-import { DataForm } from '@wordpress/dataviews/wp';
-import { useEntityProp } from '@wordpress/core-data';
+import { PanelRow } from '@wordpress/components';
+import { fields } from '../../routes/home/constants.tsx';
+import { SwitchControl, SelectControl, InputControl } from '@wordpress/ui';
 
 export const Settings = ( { attributes, setAttributes } ) => {
 	const { config } = attributes;
+	const data = config || pdf_embed;
 
 	const handleChange = ( edits ) => {
 		setAttributes( {
@@ -14,43 +15,59 @@ export const Settings = ( { attributes, setAttributes } ) => {
 		} );
 	};
 
-	const newFields = fields.map( ( field ) => {
-		const { description, ...rest } = field;
-		return rest;
-	} );
+	const settingsFields = fields.filter(
+		( field ) => field.type !== 'password'
+	);
 
 	return (
-		<DataForm
-			data={ config || pdf_embed }
-			fields={ newFields }
-			form={ {
-				fields: [
-					'embedMode',
-					'showZoomControl',
-					'showAnnotationTools',
-					'showFullScreen',
-					'defaultViewMode',
-					'enableFormFilling',
-					'showDownloadPDF',
-					'showPrintPDF',
-					'exitPDFViewerType',
-					'showThumbnails',
-					'showBookmarks',
-					'enableLinearization',
-					'enableAnnotationAPIs',
-					'includePDFAnnotations',
-					'enableSearchAPIs',
-					'showDisabledSaveButton',
-					'focusOnRendering',
-					'dockPageControls',
-					'showFullScreenViewButton',
-				],
-				layout: {
-					labelPosition: undefined,
-					type: 'regular',
-				},
-			} }
-			onChange={ ( edits ) => handleChange( edits ) }
-		/>
+		<>
+			{ settingsFields.map( ( field ) => (
+				<p key={ field.id }>
+					{ field.type === 'boolean' && (
+						<SwitchControl
+							name={ field.id }
+							label={ field.label }
+							description={ field.description }
+							checked={ Boolean( data?.[ field.id ] ) }
+							onCheckedChange={ ( checked ) =>
+								handleChange( { [ field.id ]: checked } )
+							}
+						/>
+					) }
+					{ field.elements && (
+						<SelectControl
+							label={ field.label }
+							description={
+								field.elements?.find(
+									( item ) =>
+										item.value === data?.[ field.id ]
+								).description ?? null
+							}
+							onValueChange={ ( item ) =>
+								handleChange( { [ field.id ]: item.value } )
+							}
+							items={ field.elements }
+							value={
+								field.elements?.find(
+									( item ) =>
+										item.value === data?.[ field.id ]
+								) ?? null
+							}
+						/>
+					) }
+					{ field.type === 'text' && (
+						<InputControl
+							name={ field.id }
+							label={ field.label }
+							description={ field.description }
+							defaultValue={ data?.[ field.id ] }
+							onValueChange={ ( val ) =>
+								handleChange( { [ field.id ]: val } )
+							}
+						/>
+					) }
+				</p>
+			) ) }
+		</>
 	);
 };

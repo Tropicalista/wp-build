@@ -11,13 +11,15 @@
 		"html": false,
 		"anchor": true,
 		"dimensions": {
-			"minHeight": true,
 			"height": true
 		}
 	},
 	"attributes": {
 		"type": {
-			"enum": ["global", "local"],
+			"enum": [
+				"global",
+				"local"
+			],
 			"default": "global"
 		},
 		"mediaUrl": {
@@ -40,6 +42,9 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": ["file:./view.js", "pdf-embed-api"],
-    "render": "file:./render.php"
+	"viewScript": [
+		"file:./view.js",
+		"pdf-embed-api"
+	],
+	"render": "file:./render.php"
 }
