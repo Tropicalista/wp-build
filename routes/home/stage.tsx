@@ -82,8 +82,6 @@ function Stage() {
 		form
 	);
 
-	console.log( 'validity', isValid );
-
 	if ( ! settings || ! hasResolved ) {
 		return (
 			<Stack
@@ -114,7 +112,7 @@ function Stage() {
 					align="flex-start"
 					className="experiments-page__content"
 				>
-					<Card.Root>
+					<Card.Root className="colonna-sinistra">
 						<Card.Header>
 							<Card.Title>Heading</Card.Title>
 						</Card.Header>
@@ -127,10 +125,10 @@ function Stage() {
 								onChange={ ( edits ) => handleChange( edits ) }
 							/>
 						</Card.Content>
+						<Footer isValid={ isValid } />
 					</Card.Root>
 					<Help />
 				</Stack>
-				<Footer isValid={ isValid } />
 			</div>
 		</Page>
 	);

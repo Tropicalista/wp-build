@@ -1,14 +1,11 @@
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { store as coreDataStore, useEntityProp } from '@wordpress/core-data';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { Card, Button, Stack } from '@wordpress/ui';
-import { DataForm, useFormValidity } from '@wordpress/dataviews';
 import { store as noticesStore } from '@wordpress/notices';
 import './style.scss';
 
-function Footer( { isValid } ) {
-	const [ settings ] = useEntityProp( 'root', 'site', 'pdf_embed' );
-
+function Footer( { isValid }: { isValid: boolean } ) {
 	const { isSaving, hasEdits, hasResolved } = useSelect(
 		( select ) => ( {
 			hasResolved: select( coreDataStore ).hasFinishedResolution(
@@ -22,8 +19,7 @@ function Footer( { isValid } ) {
 			hasEdits: select( coreDataStore ).hasEditsForEntityRecord(
 				'root',
 				'site',
-				undefined,
-				'pdf_embed'
+				undefined
 			),
 		} ),
 		[]
@@ -53,7 +49,6 @@ function Footer( { isValid } ) {
 			} );
 	};
 
-	console.log( 'validity', isValid );
 	return (
 		<div className="experiments-page__footer">
 			<Stack gap="lg" align="flex-start">

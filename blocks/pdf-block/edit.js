@@ -13,6 +13,7 @@ import { KeyInput } from './key-input';
 import { Viewer } from './viewer';
 import { Settings } from './settings.js';
 import { useEntityProp } from '@wordpress/core-data';
+import { SelectControl } from '@wordpress/ui';
 
 export const MIN_PREVIEW_HEIGHT = 200;
 export const MAX_PREVIEW_HEIGHT = 2000;
@@ -30,8 +31,8 @@ export default function Edit( props ) {
 		{
 			a: (
 				<a
-					href={ addQueryArgs( 'admin.php', {
-						page: 'pdf-embed',
+					href={ addQueryArgs( 'options-general.php', {
+						page: 'pdf-embed-settings-wp-admin',
 					} ) }
 					target="_blank"
 					rel="noreferrer"

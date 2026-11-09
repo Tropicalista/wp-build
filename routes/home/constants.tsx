@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useCallback, createInterpolateElement } from '@wordpress/element';
+import { createInterpolateElement } from '@wordpress/element';
 import { ExternalLink } from '@wordpress/components';
 import { SelectControl } from '@wordpress/ui';
 import type { Field } from '@wordpress/dataviews';

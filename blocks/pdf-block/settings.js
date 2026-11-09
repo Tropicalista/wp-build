@@ -1,6 +1,11 @@
-import { PanelRow } from '@wordpress/components';
 import { fields } from '../../routes/home/constants.tsx';
-import { SwitchControl, SelectControl, InputControl } from '@wordpress/ui';
+import {
+	SwitchControl,
+	SelectControl,
+	InputControl,
+	Stack,
+} from '@wordpress/ui';
+import { Fragment } from 'react';
 
 export const Settings = ( { attributes, setAttributes } ) => {
 	const { config } = attributes;
@@ -20,9 +25,9 @@ export const Settings = ( { attributes, setAttributes } ) => {
 	);
 
 	return (
-		<>
+		<Stack gap="md" direction="column">
 			{ settingsFields.map( ( field ) => (
-				<p key={ field.id }>
+				<Fragment key={ field.id }>
 					{ field.type === 'boolean' && (
 						<SwitchControl
 							name={ field.id }
@@ -47,15 +52,10 @@ export const Settings = ( { attributes, setAttributes } ) => {
 								handleChange( { [ field.id ]: item.value } )
 							}
 							items={ field.elements }
-							value={
-								field.elements?.find(
-									( item ) =>
-										item.value === data?.[ field.id ]
-								) ?? null
-							}
+							value={ data?.[ field.id ] }
 						/>
 					) }
-					{ field.type === 'text' && (
+					{ field.id === 'measurementId' && (
 						<InputControl
 							name={ field.id }
 							label={ field.label }
@@ -64,10 +64,11 @@ export const Settings = ( { attributes, setAttributes } ) => {
 							onValueChange={ ( val ) =>
 								handleChange( { [ field.id ]: val } )
 							}
+							value={ data?.[ field.id ] }
 						/>
 					) }
-				</p>
+				</Fragment>
 			) ) }
-		</>
+		</Stack>
 	);
 };

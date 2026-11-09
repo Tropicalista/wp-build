@@ -35381,10 +35381,10 @@ function DataForm({
 var logo_default = 'data:image/svg+xml,<?xml version="1.0" encoding="iso-8859-1"?>%0D%0A<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->%0D%0A<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" %0D%0A%09 viewBox="0 0 309.267 309.267" xml:space="preserve">%0D%0A<g>%0D%0A%09<path style="fill:%23E2574C;" d="M38.658,0h164.23l87.049,86.711v203.227c0,10.679-8.659,19.329-19.329,19.329H38.658%0D%0A%09%09c-10.67,0-19.329-8.65-19.329-19.329V19.329C19.329,8.65,27.989,0,38.658,0z"/>%0D%0A%09<path style="fill:%23B53629;" d="M289.658,86.981h-67.372c-10.67,0-19.329-8.659-19.329-19.329V0.193L289.658,86.981z"/>%0D%0A%09<path style="fill:%23FFFFFF;" d="M217.434,146.544c3.238,0,4.823-2.822,4.823-5.557c0-2.832-1.653-5.567-4.823-5.567h-18.44%0D%0A%09%09c-3.605,0-5.615,2.986-5.615,6.282v45.317c0,4.04,2.3,6.282,5.412,6.282c3.093,0,5.403-2.242,5.403-6.282v-12.438h11.153%0D%0A%09%09c3.46,0,5.19-2.832,5.19-5.644c0-2.754-1.73-5.49-5.19-5.49h-11.153v-16.903C204.194,146.544,217.434,146.544,217.434,146.544z%0D%0A%09%09 M155.107,135.42h-13.492c-3.663,0-6.263,2.513-6.263,6.243v45.395c0,4.629,3.74,6.079,6.417,6.079h14.159%0D%0A%09%09c16.758,0,27.824-11.027,27.824-28.047C183.743,147.095,173.325,135.42,155.107,135.42z M155.755,181.946h-8.225v-35.334h7.413%0D%0A%09%09c11.221,0,16.101,7.529,16.101,17.918C171.044,174.253,166.25,181.946,155.755,181.946z M106.33,135.42H92.964%0D%0A%09%09c-3.779,0-5.886,2.493-5.886,6.282v45.317c0,4.04,2.416,6.282,5.663,6.282s5.663-2.242,5.663-6.282v-13.231h8.379%0D%0A%09%09c10.341,0,18.875-7.326,18.875-19.107C125.659,143.152,117.425,135.42,106.33,135.42z M106.108,163.158h-7.703v-17.097h7.703%0D%0A%09%09c4.755,0,7.78,3.711,7.78,8.553C113.878,159.447,110.863,163.158,106.108,163.158z"/>%0D%0A</g>%0D%0A</svg>';
 
 // routes/home/style.scss
-if (typeof document !== "undefined" && (typeof process === "undefined" || true) && !document.head.querySelector("style[data-wp-hash='e7454ac355']")) {
+if (typeof document !== "undefined" && (typeof process === "undefined" || true) && !document.head.querySelector("style[data-wp-hash='7a69052339']")) {
   const style = document.createElement("style");
-  style.setAttribute("data-wp-hash", "e7454ac355");
-  style.appendChild(document.createTextNode(".experiments-page__stage-loading{color:var(--wp--preset--color--base);margin:auto;max-width:300px;position:relative;top:50%}.experiments-page__form{box-sizing:border-box;display:flex;flex-direction:column;margin-inline:auto;max-width:800px;width:100%}@media (max-width:600px){.experiments-page__content{flex-direction:column}}"));
+  style.setAttribute("data-wp-hash", "7a69052339");
+  style.appendChild(document.createTextNode(".experiments-page__stage-loading{color:var(--wp--preset--color--base);margin:auto;max-width:300px;position:relative;top:50%}.experiments-page__form{box-sizing:border-box;display:flex;flex-direction:column;margin-inline:auto;max-width:800px;width:100%}.experiments-page__form .experiments-page__content .main-content{flex:1}.experiments-page__form .experiments-page__content .ads-container{flex:0 0 200px}@media (max-width:768px){.experiments-page__content{flex-direction:column}}"));
   document.head.appendChild(style);
 }
 
@@ -35791,7 +35791,6 @@ var import_data = __toESM(require_data());
 var import_notices = __toESM(require_notices());
 var import_jsx_runtime155 = __toESM(require_jsx_runtime());
 function Footer2({ isValid: isValid2 }) {
-  const [settings] = (0, import_core_data.useEntityProp)("root", "site", "pdf_embed");
   const { isSaving, hasEdits, hasResolved } = (0, import_data.useSelect)(
     (select) => ({
       hasResolved: select(import_core_data.store).hasFinishedResolution(
@@ -35805,8 +35804,7 @@ function Footer2({ isValid: isValid2 }) {
       hasEdits: select(import_core_data.store).hasEditsForEntityRecord(
         "root",
         "site",
-        void 0,
-        "pdf_embed"
+        void 0
       )
     }),
     []
@@ -35831,7 +35829,6 @@ function Footer2({ isValid: isValid2 }) {
       });
     });
   };
-  console.log("validity", isValid2);
   return /* @__PURE__ */ (0, import_jsx_runtime155.jsx)("div", { className: "experiments-page__footer", children: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(Stack, { gap: "lg", align: "flex-start", children: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
     Button4,
     {
@@ -35947,7 +35944,6 @@ function Stage() {
     fields,
     form
   );
-  console.log("validity", isValid2);
   if (!settings || !hasResolved) {
     return /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(
       Stack,
@@ -35973,33 +35969,31 @@ function Stage() {
       ),
       visual: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)("img", { src: logo_default, alt: "" }),
       hasPadding: true,
-      children: /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)("div", { className: "experiments-page__form", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(
-          Stack,
-          {
-            gap: "lg",
-            align: "flex-start",
-            className: "experiments-page__content",
-            children: [
-              /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(card_exports.Root, { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Header, { children: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Title, { children: "Heading" }) }),
-                /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
-                  DataForm,
-                  {
-                    data: settings,
-                    fields,
-                    form,
-                    validity,
-                    onChange: (edits) => handleChange(edits)
-                  }
-                ) })
-              ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Help, {})
-            ]
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Footer2, { isValid: isValid2 })
-      ] })
+      children: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)("div", { className: "experiments-page__form", children: /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(
+        Stack,
+        {
+          gap: "lg",
+          align: "flex-start",
+          className: "experiments-page__content",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(card_exports.Root, { className: "colonna-sinistra", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Header, { children: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Title, { children: "Heading" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(card_exports.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
+                DataForm,
+                {
+                  data: settings,
+                  fields,
+                  form,
+                  validity,
+                  onChange: (edits) => handleChange(edits)
+                }
+              ) }),
+              /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Footer2, { isValid: isValid2 })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Help, {})
+          ]
+        }
+      ) })
     }
   );
 }

@@ -15,9 +15,26 @@
     margin-inline: auto;
     display: flex;
     flex-direction: column;
+
+    .experiments-page__content {
+
+        /* Colonna sinistra: occupa tutto lo spazio restante (600px quando lo schermo è grande) */
+        .main-content {
+            flex: 1;
+            /* Cresce dinamicamente per riempire lo spazio rimanente */
+        }
+
+        /* Colonna destra: rimane sempre fissa a 200px */
+        .ads-container {
+            flex: 0 0 200px;
+
+            .ads-container__reviews {}
+        }
+
+    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .experiments-page__content {
         flex-direction: column;
     }
